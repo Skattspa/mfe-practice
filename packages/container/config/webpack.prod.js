@@ -2,7 +2,7 @@ const { merge } = require('webpack-merge');
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 const commonConfig = require('./webpack.common');
 const packageJson = require('../package.json'); // Import package.json to share dependencies
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 
 const domain = process.env.PRODUCTION_DOMAIN;
 
@@ -19,9 +19,7 @@ const prodConfig = {
             },
             shared: packageJson.dependencies,
         }),
-        new HtmlWebpackPlugin({
-           template: './public/index.html',
-       })
+        
     ]
 }
 
