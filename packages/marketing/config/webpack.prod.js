@@ -10,11 +10,13 @@ const prodConfig = {
     mode: 'production',
     output: {
         filename: '[name].[contenthash].js',
+        publicPath: `/marketing/latest/`,
     },
     plugins: [
         new ModuleFederationPlugin({
             name: 'marketing',
-            remotes: {
+            filename: 'remoteEntry.js',
+            exposes: {
                 './MarketingApp': './src/bootstrap',
             },
             shared: packageJson.dependencies,
